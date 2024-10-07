@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://apis.google.com/js/api.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="sweetalert2.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="api.js"></script>
+    <script src="key.js"></script>
+</head>
+
+
+
+
+<body>
+    <style>
+        .container-register {
+            display: flex;
+            flex-direction: row;
+            background-color: aqua;
+        }
+
+        .data-form {
+            width: 40%;
+            background-color: chartreuse;
+        }
+
+        .table-data {
+            width: 60%;
+            background-color: blue;
+        }
+
+        .input-no {
+            width: 10%;
+        }
+
+        .container-sm {
+            display: flex;
+        }
+    </style>
+    <h1 class="visually-hidden">Headers examples</h1>
+
+    <div class="container">
+        <header class="justify-content-center py-3 mb-4 border-bottom">
+            <a class="align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <div class="container-sm noprint" style="font-family: sarabun;">
+                    <div class="container-left noprint">
+                      <p class="fs-1 fw-bold ">Registation System</p>
+                    </div>
+                    <div class="container-right ms-5 text-end noprint" id="datetime"></div>
+              </div>
+            </a>
+            <ul class="nav nav-pills justify-content-end noprint">
+                <li class="nav-item">
+                    <a class="nav-link active" style="background-color:lightskyblue;" aria-current="page"
+                        aria-disabled="true">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cbc.html">Database</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cbc.html">Specimen</a>
+                </li>
+            </ul>
+        </header>
+
+        <div class="container-md">
+            <div class="row align-items-md-stretch">
+                <div class="col-md-4">
+                    <div class="ms-1 p-2 bg-secondary-subtle border rounded-2">
+                        <form class="d-flex ms-1 p-2 round-2" style="font-size: 0.75rem;" role="search"
+                            onsubmit="event.preventDefault(); searchData();">
+                            <input id="searchKey" class="form-control me-2" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit"
+                                style="cursor: pointer;">Search</button>
+                        </form>
+                    </div>
+                    <form id="form1" class="ms-2 mt-2 mb-2 p-2" style="font-family: sarabun;">
+                        <div class="container-fluid">
+                            <div class="input-group input-group-sm mb-3 mt-2">
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text" style="font-size: 0.75rem;">ลำดับที่</span>
+                                        <span class="form-control fw-bold" id="numb"></span>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="input-group">
+                                        <span class="input-group-text ms-3" style="font-size: 0.75rem;">Register
+                                            ID</span>
+                                        <span class="form-control fw-bold" id="registernumber"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group input-group-sm mb-3 mt-2">
+                                <div class="input-group">
+                                    <span class="input-group-text" style="font-size: 0.75rem;">ชื่อ นามสกุล</span>
+                                    <span class="form-control fw-bold" id="name"></span>
+                                </div>
+                            </div>
+                            <div class="input-group input-group-sm mb-3 mt-2">
+                                <div class="input-group">
+                                    <span class="input-group-text" style="font-size: 0.75rem;">เลขบัตรประชาชน</span>
+                                    <span class="form-control fw-bold" id="idcard"></span>
+                                </div>
+                            </div>
+                            <div class="input-group input-group-sm mb-3 mt-2">
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text" style="font-size: 0.75rem;">อายุ</span>
+                                        <span class="form-control fw-bold" id="age"></span>
+                                        <span class="input-group-text" style="font-size: 0.75rem;">ปี</span>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="input-group">
+                                        <span class="input-group-text ms-3" style="font-size: 0.75rem;">ว/ด/ป
+                                            เกิด</span>
+                                        <span class="form-control fw-bold" id="birthday"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h-100 p-2 border rounded-2">
+                            <div class="row">
+                                <div class="col-4" style="font-size: 0.75rem;">โปรแกรมตรวจ</div>
+                                <div class="col-8 fw-bold" id="program"></div>
+                            </div>
+                            <h class="ms-2" style="font-size: 0.75rem;">รายการตรวจ</h>
+                            <div class="ms-5 mb-3" id="programdetail" style="font-size: 0.75rem;"></div>
+                        </div>
+                    </form>
+
+                    <div class="btn-group ms-2" role="group" aria-label="Basic outlined example">
+                        <button id="b1" type="button" onclick="submitdata()" class="btn btn-outline-primary"
+                            style="cursor: pointer;">ลงทะเบียน</button>
+                        <button id="b2" type="button" class="btn btn-outline-secondary" onclick="addData()"
+                            style="cursor: pointer;">เพิ่มรายชื่อ</button>
+                        <button id="b3" type="button" class="btn btn-outline-success" onclick="printSticker()"
+                            style="cursor: pointer;">พิมพ์สติกเกอร์</button>
+                    </div>
+
+                </div>
+                <div class="col-md-8">
+                    <div class="h-100 p-2 bg-light border rounded-3">
+                        <table class="table table-result" style="font-size: 0.75rem;">
+                            <thead class="table-secondary" style="font-family: sarabun;">
+                                <tr>
+                                    <th scope="col" class="text-center" style="font-family: sarabun;">ลำดับ</th>
+                                    <th scope="col" colspan="2" class="text-center" style="font-family: sarabun;">RegisterID</th>
+                                    <th scope="col" colspan="4" class="text-center" style="font-family: sarabun;">ชื่อ นามสกุล</th>
+                                    <th scope="col" class="text-center" style="font-family: sarabun;">โปรแกรมตรวจ</th>
+                                    <th scope="col" class="text-center" style="font-family: sarabun;">วันที่/เวลาลงทะเบียน</th>
+                                </tr>
+                            </thead>
+                            <tbody id="registeresult"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+
+
+
+
+
+
+
+
+            // Search data function
+            // ประกาศตัวแปรนอกฟังก์ชันเพื่อเก็บค่าข้อมูลที่ค้นพบ
+
+            // ฟังก์ชันค้นหาข้อมูล
+            function searchData() {
+                const searchKey = document.getElementById('searchKey').value;
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${rangesheet1}?key=${apiKey}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+
+                        const numb = document.getElementById("numb");
+                        const regisid = document.getElementById("registernumber");
+                        const name = document.getElementById("name");
+                        const idcard = document.getElementById("idcard");
+                        const age = document.getElementById("age");
+                        const birthday = document.getElementById("birthday");
+                        const program = document.getElementById("program");
+
+                        // Clear previous results
+
+                        // ค้นหาและเก็บข้อมูลในตัวแปร searchResult
+                        data.values.forEach(row => {
+                            if (row[0] === searchKey) {
+                                // แสดงผลลัพธ์
+                                regisid.innerHTML = row[0];
+                                name.innerHTML = row[1];
+                                idcard.innerHTML = row[2];
+                                age.innerHTML = row[3];
+                                birthday.innerHTML = row[4];
+                                program.innerHTML = row[5];
+                                found = true;
+
+                                // เก็บค่าผลลัพธ์ในตัวแปร searchResult
+                                searchResult = {
+                                    "regisid": row[0],
+                                    "name": row[1],
+                                    "idcard": row[2],
+                                    "age": row[3],
+                                    "birthday": row[4],
+                                    "program": row[5]
+                                };
+
+                                // เรียกใช้งานฟังก์ชันอื่นพร้อมส่งข้อมูล
+                                searchProgram(row[5]);
+
+                            }
+                        });
+
+                        if (!found) {
+                            program.innerHTML = '<p>ไม่พบ ID นี้</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+
+
+            // Search program function
+            function searchProgram(programName) {
+                const url1 = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${rangesheet2}?key=${apiKey}`;
+
+                fetch(url1)
+                    .then(response => response.json())
+                    .then(data => {
+                        const programdetail = document.getElementById('programdetail');
+                        programdetail.innerHTML = ""; // Clear previous data
+
+                        let found = false;
+
+                        // Search for matching program
+                        data.values.forEach(row => {
+                            if (row[0] === programName) {
+                                programdetail.innerHTML += `<p>-${row[1]}</p>`; // Show program detail
+                                found = true;
+                            }
+                        });
+
+                        if (!found) {
+                            programdetail.innerHTML = '<p>ไม่พบข้อมูลโปรแกรม</p>'; // Show message if no data found
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+
+
+            function getNextNumber() {
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${rangesheet4}?key=${apiKey}`;
+
+                return fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const values = data.values;
+                        if (values && values.length > 0) {
+                            const lastNumber = values[values.length - 1][0];
+                            return parseInt(lastNumber) + 1; // Next number
+                        } else {
+                            return 1; // ถ้าไม่มีข้อมูลในคอลัมน์ A
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
+            }
+
+            function displayNextNumber() {
+                getNextNumber().then(nextNumber => {
+                    // แสดงค่าใน element ที่มี id เป็น numb
+                    document.getElementById('numb').innerHTML = nextNumber;
+                }).catch(error => {
+                    console.error('Error displaying next number:', error);
+                });
+            }
+
+
+
+
+ function formatDateTime() {
+  const now = new Date(); // ดึงวันที่และเวลาปัจจุบัน
+
+  // ดึงค่าวัน, เดือน, ปี
+  const day = String(now.getDate()).padStart(2, '0'); // เติมเลข 0 ถ้าวันน้อยกว่า 10
+  const month = String(now.getMonth() + 1).padStart(2, '0'); // เดือนใน JavaScript เริ่มที่ 0
+  const year = String(now.getFullYear()).slice(2); // เอาสองหลักสุดท้ายของปี
+
+  // ดึงค่า ชั่วโมงและนาที
+  const hours = String(now.getHours()).padStart(2, '0'); // เติมเลข 0 ถ้าชั่วโมงน้อยกว่า 10
+  const minutes = String(now.getMinutes()).padStart(2, '0'); // เติมเลข 0 ถ้านาทีน้อยกว่า 10
+
+  // รวมเป็นรูปแบบที่ต้องการ: dd/mm/yy, hh:mm
+  return `${day}/${month}/${year}, ${hours}:${minutes}`;
+}
+
+// แสดงวันที่และเวลาปัจจุบัน
+console.log(formatDateTime());
+
+
+
+window.onload = function(){
+    loadAllRecords();
+    displayNextNumber();
+    updateDateTime()
+}
+
+            
+            function loadAllRecords() {
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${rangesheet3}?key=${apiKey}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const resultDiv1 = document.getElementById('registeresult');
+
+
+
+
+                        resultDiv1.innerHTML = ''; // เคลียร์ผลลัพธ์ก่อนแสดงใหม่
+
+                        data.values.forEach(row => {
+
+                            resultDiv1.innerHTML += ` 
+           <tr>
+            <th scope="col" class="text-center">${row[0]}</th>
+                                <td scope="col" colspan="2" class="text-center" style="font-family: sarabun;">${row[1]}</th>
+                                <td scope="col" colspan="4" class="text-center" style="font-family: sarabun;">${row[2]}</th>
+                                <td scope="col" class="text-center" style="font-family: sarabun;">${row[6]}</th>
+                                <td scope="col" class="text-center" style="font-family: sarabun;">${row[7]}</th>
+             
+             
+             
+           </tr>
+         `;
+                        }
+                        );
+                    })
+
+            }
+
+            function updateDateTime() {
+    const now = new Date();
+    const date = now.toLocaleDateString('th-TH');
+    const time = now.toLocaleTimeString('th-TH');
+    document.getElementById('datetime').innerHTML = `${date} ${time}`;
+            }
+
+     setInterval(updateDateTime, 1000);
+ </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended&display=swap');
+
+
+.container-register{
+    display: flex;
+    flex-direction: row;
+    background-color: aqua;
+}
+.data-form{
+    width: 40%;
+    background-color:chartreuse;
+}
+.table-data{
+    width: 60%;
+    background-color:blue
+}
+.input-no{
+    width: 10%;
+}
+.container-sm {
+    display: flex;
+}
+#numb{
+    font-size: 0.75rem
+   }
+   #registernumber{
+     font-size: 0.75rem
+    }
+    #name{
+     font-size: 0.75rem
+    }
+    #idcard{
+     font-size: 0.75rem
+    }
+    #age{
+     font-size: 0.75rem
+    }
+    #birthday{
+        font-size: 0.75rem
+       }
+       #program{
+        font-size: 0.75rem
+       } 
+       .h-100{
+        min-height: 10cm;
+       } 
+       .container-sm{
+        display: flex;
+        flex-direction: row;
+     
+        justify-content: space-between;
+      }
+      .container-left{
+        width: 85%;
+    
+      }
+      .container-right{
+        width: 15%;
+   
+      } 
+      #form1{
+        background-color:azure
+      }
+      .libre-barcode-39-extended-regular {
+        font-family: "Libre Barcode 39 Extended", system-ui;
+        font-weight: 400;
+        font-style: normal;
+      }
+    #barcode{
+     height:  5cm;
+    }
+    @media print {
+        #barecode{ 
+            width: 30px !important;
+            height: 10px !important;
+        }
+    }
+  
+  #b1{
+    font-family: "sarabun";
+    font-size: 0.75rem;
+    height: 2cm;
+    width: 4.5cm;
+  }
+  #b2{
+    font-family: "sarabun";
+    font-size: 0.75rem;
+    height: 2cm;
+    width: 3cm;
+  }
+  #b3{
+    font-family: "sarabun";
+    font-size: 0.75rem;
+    height: 2cm;
+    width: 3cm;
+  }

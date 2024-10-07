@@ -1,7 +1,23 @@
+<!-- HTML ส่วนฟอร์ม -->
+<form id="register-form">
+  <span id="numb">123</span> <!-- ตัวอย่างค่าที่จะดึงจาก span -->
+  <span id="registernumber">456789</span>
+  <span id="name">John Doe</span>
+  <span id="idcard">1234567890123</span>
+  <span id="age">30</span>
+  <span id="birthday">1990-01-01</span>
+  <span id="program">Example Program</span>
+
+  <!-- ปุ่มส่งข้อมูล -->
+  <button type="button" onclick="submitData()">ส่งข้อมูล</button>
+</form>
+
+<!-- โหลด Google API -->
 <script src="https://apis.google.com/js/api.js"></script>
 
-
-  let sheets;
+<!-- สคริปต์สำหรับจัดการข้อมูล -->
+<script>
+  let sheets; // ประกาศตัวแปร
 
   // ฟังก์ชันเริ่มต้นเมื่อลงชื่อเข้าใช้เสร็จสิ้น
   function initClient() {
@@ -71,5 +87,6 @@
     });
   }
 
-  // โหลด Google API และเริ่มต้น client
+  // โหลด Google API และเริ่มต้น client หลังจากที่ DOM ถูกโหลดเสร็จสิ้น
   gapi.load('client:auth2', initClient);
+</script>

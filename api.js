@@ -1,5 +1,21 @@
 <script src="https://apis.google.com/js/api.js"></script>
 
+let sheets; // ประกาศตัวแปร
+
+function initClient() {
+  gapi.client.init({
+    apiKey: 'AIzaSyBmlGsIpynjUrE3PKnoT-RrCKgyb_844Sg',
+    clientId: '
+907098027715-rl44p6k03n46pmvu5cdpdo6pun1et1ua.apps.googleusercontent.com',
+    discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+    scope: 'https://www.googleapis.com/auth/spreadsheets'
+  }).then(function () {
+    // สร้าง instance ของ Google Sheets API
+    sheets = gapi.client.sheets;
+  }).catch(function (error) {
+    console.log('Error during API client initialization:', error);
+  });
+}
 
 const fs = require('fs');
 const { google } = require('googleapis');
